@@ -10,3 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include"pushswap.h"
+void	push(t_list **stack_a,void *content)
+{
+	t_list *new_node = ft_lstnew(content);
+	if(!new_node)
+		return;
+	new_node->next = *stack_a;
+	*stack_a = new_node;
+}

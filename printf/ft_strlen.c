@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pablalva <pablalva@student.42madrid.com>   #+#  +:+       +#+        */
+/*   By: pablalva <pablalva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-13 18:32:29 by pablalva          #+#    #+#             */
-/*   Updated: 2024-12-13 18:32:29 by pablalva         ###   ########.fr       */
+/*   Created: 2024/09/17 15:57:09 by pablalva          #+#    #+#             */
+/*   Updated: 2024/10/08 15:06:51 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <libft.h>
-# include "ft_printf.h"
+#include "printf.h"
 
+size_t	ft_strlen(const char *s)
+{
+	int	i;
 
-
-void	push(t_list **stack_a,void *content);
-
-#endif
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+/*int	main(void)
+{
+	const	char s[] = "cocacola";
+	printf("%d",ft_strlen(NULL));
+	//printf("%d",strlen(NULL));
+	return(0);
+}*/
