@@ -21,4 +21,10 @@ typedef struct s_list
 	int				value;
 	struct s_list	*next;
 }					s_list;
+
+void prueba(void);
+void hola(void);
+void que(void);
+void tal(void);
+void estas(void);
 #endif
