@@ -23,15 +23,16 @@ void	free_lst(t_node **lst)
 	}
 	*lst = NULL;
 }
+
 void	print_list(t_node *list)
 {
-	t_node *now;
+	t_node	*now;
+
 	now = list;
 	while (now)
 	{
-		ft_printf("%d ->",now->value);
+		ft_printf("%d ->", now->value);
 		now = now->next;
 	}
 	ft_printf("NULL\n");
-	
 }

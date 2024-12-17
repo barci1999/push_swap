@@ -27,8 +27,8 @@ typedef struct t_node
 // funciones de listas:
 /* ********************************************************** */
 t_node				*new_node(int value);
-void				add_front(t_node **lst, int value);
-void				add_back(t_node **lst, int value);
+void				add_front(t_node **lst, t_node *insert);
+void				add_back(t_node **lst, t_node *insert);
 void				delete_node(t_node **lst, int compare);
 int					list_size(t_node *lst);
 void				free_lst(t_node **lst);
@@ -37,7 +37,7 @@ void				print_list(t_node *list);
 // funciones de movimientos:
 /* ********************************************************** */
 void				insert_stack(t_node **stack_a, int nbr);
-void				pa(t_list **stack_a, int content);
-void				pb(t_list **stack_b, int content);
+void				pa(t_node **stack_a, t_node **stack_b);
+void				pb(t_node **stack_b, t_node **stack_a);
 
 #endif

@@ -23,34 +23,30 @@ t_node	*new_node(int value)
 	return (new_node);
 }
 
-void	add_front(t_node **lst, int value)
+void	add_front(t_node **lst, t_node *insert)
 {
-	t_node	*node;
-
-	if (!lst)
+	if (!lst || !insert)
 		return ;
-	node = new_node(value);
-	node->next = *lst;
-	*lst = node;
+	insert->next = *lst;
+	*lst = insert;
 }
 
-void	add_back(t_node **lst, int value)
+void	add_back(t_node **lst, t_node *insert)
 {
-	t_node	*node;
-	t_node	*reference;
+	t_node	*temp;
 
-	node = new_node(value);
+	if (!lst || !insert)
+		return ;
 	if (!*lst)
-		*lst = node;
-	else
 	{
-		reference = *lst;
-		while (reference->next != NULL)
-		{
-			reference = reference->next;
-		}
-		reference->next = node;
+		*lst = insert;
+		insert->next = NULL;
 	}
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = insert;
+	insert->next = NULL;
 }
 
 void	delete_node(t_node **lst, int compare)
