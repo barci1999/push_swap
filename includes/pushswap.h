@@ -12,13 +12,32 @@
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
+# include "ft_printf.h"
+# include <libft.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <libft.h>
-# include "ft_printf.h"
 
+typedef struct t_node
+{
+	int				value;
+	struct t_node	*next;
 
+}					t_node;
 
-void	push(t_list **stack_a,void *content);
+// funciones de listas:
+/* ********************************************************** */
+t_node				*new_node(int value);
+void				add_front(t_node **lst, int value);
+void				add_back(t_node **lst, int value);
+void				delete_node(t_node **lst, int compare);
+int					list_size(t_node *lst);
+void				free_lst(t_node **lst);
+void				print_list(t_node *list);
+
+// funciones de movimientos:
+/* ********************************************************** */
+void				insert_stack(t_node **stack_a, int nbr);
+void				pa(t_list **stack_a, int content);
+void				pb(t_list **stack_b, int content);
 
 #endif

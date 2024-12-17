@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_list_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pablalva <pablalva@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-17 11:45:43 by pablalva          #+#    #+#             */
-/*   Updated: 2024-12-17 11:45:43 by pablalva         ###   ########.fr       */
+/*   Created: 2024-12-16 20:48:54 by pablalva          #+#    #+#             */
+/*   Updated: 2024-12-16 20:48:54 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <pushswap.h>
 
-#include "pushswap.h"
-
-int	main(int argc, char **argv)
+void	free_lst(t_node **lst)
 {
-	t_node *stack_a;
-	//t_node *stack_b;
+	t_node	*temp;
 
-	stack_a = NULL;
-	//stack_b = NULL;
-	if (argc < 2)
+	while (*lst)
 	{
-		ft_printf("ERROR: please insert the correct arguments\n");
-		return (1);
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
 	}
-	int i = 1;
-	while (i < argc)
+	*lst = NULL;
+}
+void	print_list(t_node *list)
+{
+	t_node *now;
+	now = list;
+	while (now)
 	{
-		insert_stack(&stack_a,ft_atoi(argv[i]));
-		i++;
+		ft_printf("%d ->",now->value);
+		now = now->next;
 	}
-	print_list(stack_a);
-	return(0);
+	ft_printf("NULL\n");
+	
 }
