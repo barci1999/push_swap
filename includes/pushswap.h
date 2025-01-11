@@ -39,5 +39,6 @@ void				print_list(t_node *list);
 void				insert_stack(t_node **stack_a, int nbr);
 void				pa(t_node **stack_a, t_node **stack_b);
 void				pb(t_node **stack_b, t_node **stack_a);
-
+void				sb(t_node **stack_b);
+void				sa(t_node **stack_a);
 #endif

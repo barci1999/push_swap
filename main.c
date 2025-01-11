@@ -22,13 +22,19 @@ int	main(int argc, char **argv)
 	// stack_b = NULL;
 	if (argc < 2)
 	{
-		ft_printf("ERROR: please insert the correct arguments\n");
+		ft_printf("ERROR: please insert the correct number of arguments\n");
 		return (1);
 	}
 	i = 1;
 	while (i < argc)
 	{
-		insert_stack(&stack_a, ft_atoi(argv[i]));
+		if(ft_str_isdigit(argv[i]))
+			insert_stack(&stack_a, ft_atoi(argv[i]));
+		else
+		{
+			ft_printf("ERROR : please insert only numbers\n");
+			return(1);
+		}
 		i++;
 	}
 	print_list(stack_a);
