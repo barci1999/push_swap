@@ -9,15 +9,50 @@
 /*   Updated: 2024-12-13 18:31:16 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include"pushswap.h"
-//void ra(t_node **stack_a)
-//{
-//	t_node *temp_first ; 
-//	temp_first = (*stack_a)->next;
-//	while ((*stack_a)->next != NULL)
-//	{
-//		*stack_a = (*stack_a)->next;
-//	}
-	 
+#include "pushswap.h"
 
-//}
+void	ra(t_node **stack_a)
+{
+	t_node	*temp_first;
+	t_node	*temp_last;
+
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	temp_first = *stack_a;
+	temp_last = *stack_a;
+	while (temp_last->next != NULL)
+	{
+		temp_last = temp_last->next;
+	}
+	*stack_a = temp_first->next;
+	temp_last->next = temp_first;
+	temp_first->next = NULL;
+}
+
+void	rb(t_node **stack_b)
+{
+	t_node	*temp_first;
+	t_node	*temp_last;
+
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return ;
+	temp_first = *stack_b;
+	temp_last = *stack_b;
+	while (temp_last->next != NULL)
+	{
+		temp_last = temp_last->next;
+	}
+	*stack_b = temp_first->next;
+	temp_last->next = temp_first;
+	temp_first->next = NULL;
+}
+
+void	rr(t_node **stack_a, t_node **stack_b)
+{
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return ;
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	ra(stack_a);
+	rb(stack_b);
+}

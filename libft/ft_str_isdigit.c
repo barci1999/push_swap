@@ -13,7 +13,7 @@
 
 int	ft_str_isdigit(char *str)
 {
-	if(str[0] == '-')
+	if (str[0] == '-')
 		str++;
 	while (*str)
 	{
