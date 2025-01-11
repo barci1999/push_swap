@@ -9,4 +9,50 @@
 /*   Updated: 2024-12-13 18:31:11 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"pushswap.h"
+#include "pushswap.h"
+
+void	rra(t_node **stack_a)
+{
+	t_node	*temp_last;
+	t_node	*temp_second_last;
+
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	temp_last = (*stack_a);
+	while (temp_last->next != NULL)
+	{
+		temp_second_last = temp_last;
+		temp_last = temp_last->next;
+	}
+	temp_second_last->next = NULL;
+	temp_last->next = (*stack_a);
+	*stack_a = temp_last;
+}
+
+void	rrb(t_node **stack_b)
+{
+	t_node	*temp_last;
+	t_node	*temp_second_last;
+
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return ;
+	temp_last = (*stack_b);
+	while (temp_last->next != NULL)
+	{
+		temp_second_last = temp_last;
+		temp_last = temp_last->next;
+	}
+	temp_second_last->next = NULL;
+	temp_last->next = (*stack_b);
+	*stack_b = temp_last;
+}
+
+void	rrr(t_node **stack_a, t_node **stack_b)
+{
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return ;
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	rra(stack_a);
+	rrb(stack_b);
+}
