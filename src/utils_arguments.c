@@ -34,22 +34,25 @@ void	insert_stack(t_node **stack_a, int nbr)
 	}
 }
 
-int	comprove_order_argv(int argc, char **argv)
+void	comprove_order_argv(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc - 1)
 	{
-		if (ft_atoi(argv[i]) < ft_atoi(argv[i + 1]))
-			i++;
-		else
-			return (0);
+		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
+			break ;
+		i++;
 	}
-	return (1);
+	if (i == argc - 1)
+	{
+		ft_printf("Error: The numbers are already in order.\n");
+		exit(1);
+	}
 }
 
-int	comprove_num_argv(int argc, char **argv)
+void	comprove_num_argv(int argc, char **argv)
 {
 	int	i;
 
@@ -59,12 +62,14 @@ int	comprove_num_argv(int argc, char **argv)
 		if (ft_str_isdigit(argv[i]))
 			i++;
 		else
-			return (0);
+		{
+			ft_printf("Error: Not all the arguments are numbers.\n");
+			exit(1);
+		}
 	}
-	return (1);
 }
 
-int	comprove_dup_argv(int argc, char **argv)
+void	comprove_dup_argv(int argc, char **argv)
 {
 	int	i;
 
@@ -72,9 +77,23 @@ int	comprove_dup_argv(int argc, char **argv)
 	while (i < argc - 1)
 	{
 		if (ft_atoi(argv[i]) == ft_atoi(argv[i + 1]))
-			return (0);
+		{
+			ft_printf("Error: There are duplicate numbers.\n");
+			exit(1);
+		}
 		else
 			i++;
 	}
-	return (1);
+}
+
+void	fun_error(int argc, char **argv)
+{
+	if (argc < 3)
+	{
+		ft_printf("Error: Not enough arguments.\n");
+		exit(1);
+	}
+	comprove_num_argv(argc, argv);
+	comprove_dup_argv(argc, argv);
+	comprove_order_argv(argc, argv);
 }
