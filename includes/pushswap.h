@@ -36,7 +36,6 @@ void				print_list(t_node *list);
 
 // funciones de movimientos:
 /* ********************************************************** */
-void				insert_stack(t_node **stack_a, int nbr);
 void				pa(t_node **stack_a, t_node **stack_b);
 void				pb(t_node **stack_b, t_node **stack_a);
 void				sb(t_node **stack_b);
@@ -47,4 +46,12 @@ void				rr(t_node **stack_a, t_node **stack_b);
 void				rra(t_node **stack_a);
 void				rrb(t_node **stack_b);
 void				rrr(t_node **stack_a, t_node **stack_b);
+
+// fuciones de control de argumentos
+/* ********************************************************** */
+void				insert_stack(t_node **stack_a, int nbr);
+int					comprove_order_argv(int argc, char **argv);
+int					comprove_num_argv(int argc, char **argv);
+int					comprove_dup_argv(int argc, char **argv);
+
 #endif

@@ -18,21 +18,30 @@ int	main(int argc, char **argv)
 	int		i;
 
 	stack_a = NULL;
-	if (argc < 2)
+	if (argc < 3)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error: Not enough arguments.\n", 2);
 		return (1);
 	}
 	i = 1;
+	if (!comprove_num_argv(argc, argv))
+	{
+		ft_putstr_fd("Error: Not all the arguments are numbers.\n", 2);
+		return (1);
+	}
+	if (comprove_order_argv(argc, argv))
+	{
+		ft_putstr_fd("Error: The numbers are already in order.\n", 2);
+		return (1);
+	}
+	if (!comprove_dup_argv(argc, argv))
+	{
+		ft_putstr_fd("Error: There are duplicate numbers.\n", 2);
+		return (1);
+	}
 	while (i < argc)
 	{
-		if (ft_str_isdigit(argv[i]))
-			insert_stack(&stack_a, ft_atoi(argv[i]));
-		else
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (1);
-		}
+		insert_stack(&stack_a, ft_atoi(argv[i]));
 		i++;
 	}
 	ra(&stack_a);
