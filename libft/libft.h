@@ -12,6 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -55,6 +56,7 @@ void				ft_putnbr_fd(int n, int fd);
 char				**ft_split(char const *s, char c);
 int					ft_str_isdigit(char *str);
 double				ft_atof(char *nb);
+long				ft_atol(char *str);
 int					ft_str_is_dec(char *nb);
 
 typedef struct s_list

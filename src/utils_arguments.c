@@ -11,89 +11,101 @@
 /* ************************************************************************** */
 #include <pushswap.h>
 
-void	insert_stack(t_node **stack_a, int nbr)
+void	insert_stack(t_node **stack_a, char **num)
 {
 	t_node	*to_insert;
 	t_node	*temp;
+	int		i;
 
-	to_insert = new_node(nbr);
-	if (*stack_a == NULL)
+	i = 0;
+	while (num[i] != NULL)
 	{
-		*stack_a = to_insert;
-		to_insert->next = NULL;
-	}
-	else
-	{
-		temp = *stack_a;
-		while (temp->next)
+		to_insert = new_node(ft_atoi(num[i]));
+		if (*stack_a == NULL)
 		{
-			temp = temp->next;
+			*stack_a = to_insert;
+			to_insert->next = NULL;
 		}
-		temp->next = to_insert;
-		to_insert->next = NULL;
-	}
-}
-
-void	comprove_order_argv(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc - 1)
-	{
-		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
-			break ;
+		else
+		{
+			temp = *stack_a;
+			while (temp->next)
+			{
+				temp = temp->next;
+			}
+			temp->next = to_insert;
+			to_insert->next = NULL;
+		}
 		i++;
 	}
-	if (i == argc - 1)
-	{
-		ft_printf("Error: The numbers are already in order.\n");
-		exit(1);
-	}
 }
 
-void	comprove_num_argv(int argc, char **argv)
+void	comprove_num_argv(char **argv, t_node **stack_a)
 {
 	int	i;
+	int	j;
 
+	j = 0;
 	i = 1;
-	while (i < argc)
+	while (argv[i] != NULL)
 	{
-		if (ft_str_isdigit(argv[i]))
-			i++;
-		else
+		while (argv[i][j] != '\0')
 		{
-			ft_printf("Error: Not all the arguments are numbers.\n");
-			exit(1);
+			if (ft_isdigit(argv[i][j]) || argv[i][j] == ' ' || argv[i][j] == '-'
+				|| argv[i][j] == '+')
+			{
+				j++;
+			}
+			else
+				fun_error(stack_a);
 		}
+		j = 0;
+		i++;
 	}
 }
 
-void	comprove_dup_argv(int argc, char **argv)
+void	comprove_dup_argv(t_node **stack_a)
 {
-	int	i;
+	t_node	*current;
+	t_node	*temp;
 
-	i = 1;
-	while (i < argc - 1)
+	current = *stack_a;
+	while (current != NULL)
 	{
-		if (ft_atoi(argv[i]) == ft_atoi(argv[i + 1]))
+		temp = current->next;
+		while (temp != NULL)
 		{
-			ft_printf("Error: There are duplicate numbers.\n");
-			exit(1);
+			if (current->value == temp->value)
+				fun_error(stack_a);
+			temp = temp->next;
 		}
-		else
-			i++;
+		current = current->next;
 	}
 }
 
-void	fun_error(int argc, char **argv)
+void	fun_error(t_node **stack)
 {
-	if (argc < 3)
+	if (stack != NULL)
+		free_lst(stack);
+	ft_putstr_fd("Error", 2);
+	exit(1);
+}
+
+void	comprove_int(char **num, t_node **stack_a)
+{
+	int		i;
+	char	*str;
+	long	number;
+
+	i = 0;
+	while (num[i] != NULL)
 	{
-		ft_printf("Error: Not enough arguments.\n");
-		exit(1);
+		str = num[i];
+		if (str == NULL || *str == '\0')
+			fun_error(stack_a);
+		number = ft_atol(str);
+		if (number > INT_MAX || number < INT_MIN)
+			fun_error(stack_a);
+		i++;
 	}
-	comprove_num_argv(argc, argv);
-	comprove_dup_argv(argc, argv);
-	comprove_order_argv(argc, argv);
 }

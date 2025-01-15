@@ -22,6 +22,7 @@ typedef struct t_node
 	int				value;
 	struct t_node	*next;
 
+	int				index;
 }					t_node;
 
 /* List functions                                             */
@@ -49,10 +50,11 @@ void				rrr(t_node **stack_a, t_node **stack_b);
 
 /* Arguments control functions                                */
 /* ********************************************************** */
-void				insert_stack(t_node **stack_a, int nbr);
+void				insert_stack(t_node **stack_a, char **num);
 void				comprove_order_argv(int argc, char **argv);
-void				comprove_num_argv(int argc, char **argv);
-void				comprove_dup_argv(int argc, char **argv);
-void				fun_error(int argc, char **argv);
+void				comprove_num_argv(char **argv, t_node **stack);
+void				comprove_dup_argv(t_node **stack_a);
+void				fun_error(t_node **stack_a);
+void				comprove_int(char **num, t_node **stack_a);
 
 #endif
