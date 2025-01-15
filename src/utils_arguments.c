@@ -18,6 +18,8 @@ void	insert_stack(t_node **stack_a, char **num)
 	int		i;
 
 	i = 0;
+	if(num[i] == NULL)
+		fun_error(stack_a);
 	while (num[i] != NULL)
 	{
 		to_insert = new_node(ft_atoi(num[i]));
@@ -30,9 +32,7 @@ void	insert_stack(t_node **stack_a, char **num)
 		{
 			temp = *stack_a;
 			while (temp->next)
-			{
 				temp = temp->next;
-			}
 			temp->next = to_insert;
 			to_insert->next = NULL;
 		}

@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	comprove_dup_argv(&stack_a);
-	// funcion de push_swap
+	/*funcion de push_swap*/
 	print_list(stack_a);
 	free_lst(&stack_a);
 	return (0);
