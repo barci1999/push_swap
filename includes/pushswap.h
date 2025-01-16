@@ -57,4 +57,7 @@ void				comprove_dup_argv(t_node **stack_a);
 void				fun_error(t_node **stack_a);
 void				comprove_int(char **num, t_node **stack_a);
 
+/* Algorithm functions                                        */
+/* ********************************************************** */
+void				assig_index(t_node **stack_a);
 #endif

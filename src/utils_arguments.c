@@ -18,7 +18,7 @@ void	insert_stack(t_node **stack_a, char **num)
 	int		i;
 
 	i = 0;
-	if(num[i] == NULL)
+	if (num[i] == NULL)
 		fun_error(stack_a);
 	while (num[i] != NULL)
 	{
@@ -51,8 +51,8 @@ void	comprove_num_argv(char **argv, t_node **stack_a)
 	{
 		while (argv[i][j] != '\0')
 		{
-			if (ft_isdigit(argv[i][j]) || argv[i][j] == ' ' || argv[i][j] == '-'
-				|| argv[i][j] == '+')
+			if ((ft_isdigit(argv[i][j]) && argv[i][j + 1] != '-' && argv[i][j
+					+ 1] != '+') || argv[i][j] == ' ')
 			{
 				j++;
 			}
