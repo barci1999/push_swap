@@ -58,6 +58,8 @@ int					ft_str_isdigit(char *str);
 double				ft_atof(char *nb);
 long				ft_atol(char *str);
 int					ft_str_is_dec(char *nb);
+int					ft_is_sing(char c);
+int					ft_is_valid_num(char *nbr);
 
 typedef struct s_list
 {

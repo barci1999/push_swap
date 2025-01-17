@@ -40,27 +40,17 @@ void	insert_stack(t_node **stack_a, char **num)
 	}
 }
 
-void	comprove_num_argv(char **argv, t_node **stack_a)
+void	comprove_num_argv(char **num, t_node **stack_a)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	i = 1;
-	while (argv[i] != NULL)
+	while (num[i] != NULL)
 	{
-		while (argv[i][j] != '\0')
-		{
-			if ((ft_isdigit(argv[i][j]) && argv[i][j + 1] != '-' && argv[i][j
-					+ 1] != '+') || argv[i][j] == ' ')
-			{
-				j++;
-			}
-			else
-				fun_error(stack_a);
-		}
-		j = 0;
-		i++;
+		if (!(ft_is_valid_num(num[i])))
+			fun_error(stack_a);
+		else
+			i++;
 	}
 }
 
@@ -87,7 +77,7 @@ void	fun_error(t_node **stack)
 {
 	if (stack != NULL)
 		free_lst(stack);
-	ft_putstr_fd("Error", 2);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 

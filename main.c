@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	while (argv[i] != NULL)
 	{
 		num = ft_split(argv[i], ' ');
+		comprove_num_argv(num, &stack_a);
 		comprove_int(num, &stack_a);
 		insert_stack(&stack_a, num);
 		i++;
