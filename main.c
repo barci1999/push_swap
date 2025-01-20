@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 			sort_three_node(&stack_a);
 		else if (list_size(stack_a) == 4)
 			sort_four_node(&stack_a, &stack_b);
-		if (list_size(stack_a) == 5)
+		else if (list_size(stack_a) == 5)
 			sort_five_node(&stack_a,&stack_b);
 	}
 	print_list(stack_a);
