@@ -15,15 +15,16 @@
 int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
+	t_node	*stack_b;
 	int		i;
 	char	**num;
 
 	num = NULL;
 	i = 1;
+	stack_b = NULL;
 	stack_a = NULL;
 	if (argc < 2)
 		return (0);
-	comprove_num_argv(argv, &stack_a);
 	while (argv[i] != NULL)
 	{
 		num = ft_split(argv[i], ' ');
@@ -33,8 +34,18 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	comprove_dup_argv(&stack_a);
-	/* funcion de push_swap */
 	assig_index(&stack_a);
+	if (!is_sorted(&stack_a))
+	{
+		if (list_size(stack_a) == 2)
+			sa(&stack_a);
+		else if (list_size(stack_a) == 3)
+			sort_three_node(&stack_a);
+		else if (list_size(stack_a) == 4)
+			sort_four_node(&stack_a, &stack_b);
+		if (list_size(stack_a) == 5)
+			sort_five_node(&stack_a,&stack_b);
+	}
 	print_list(stack_a);
 	free_lst(&stack_a);
 	return (0);

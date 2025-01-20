@@ -14,6 +14,7 @@
 
 # include "ft_printf.h"
 # include <libft.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -60,4 +61,11 @@ void				comprove_int(char **num, t_node **stack_a);
 /* Algorithm functions                                        */
 /* ********************************************************** */
 void				assig_index(t_node **stack_a);
+bool				is_sorted(t_node **stack_a);
+t_node				*biggest_node(t_node **stack_a);
+int					detect_index_position(t_node **stack_a, int index);
+void				sort_three_node(t_node **stack_a);
+void				sort_four_node(t_node **stack_a, t_node **stack_b);
+void				sort_five_node(t_node **stack_a, t_node **stack_b);
+
 #endif
