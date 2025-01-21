@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_node	*stack_b;
 	int		i;
 	char	**num;
+	int len;
 
 	num = NULL;
 	i = 1;
@@ -35,6 +36,7 @@ int	main(int argc, char **argv)
 	}
 	comprove_dup_argv(&stack_a);
 	assig_index(&stack_a);
+	len = list_size(stack_a);
 	if (!is_sorted(&stack_a))
 	{
 		if (list_size(stack_a) == 2)
@@ -44,7 +46,9 @@ int	main(int argc, char **argv)
 		else if (list_size(stack_a) == 4)
 			sort_four_node(&stack_a, &stack_b);
 		else if (list_size(stack_a) == 5)
-			sort_five_node(&stack_a,&stack_b);
+			sort_five_node(&stack_a, &stack_b);
+		else
+			k_sort(&stack_a, &stack_b,len);
 	}
 	print_list(stack_a);
 	free_lst(&stack_a);

@@ -67,5 +67,6 @@ int					detect_index_position(t_node **stack_a, int index);
 void				sort_three_node(t_node **stack_a);
 void				sort_four_node(t_node **stack_a, t_node **stack_b);
 void				sort_five_node(t_node **stack_a, t_node **stack_b);
+void				k_sort(t_node **stack_a, t_node **stack_b, int digits);
 
 #endif

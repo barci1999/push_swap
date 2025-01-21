@@ -6,7 +6,7 @@ PRINT_DIR	= ./printf
 LIBS = -L$(LIBFT_DIR) -lft -L$(PRINT_DIR) -lftprintf -no-pie
 SRCS	=	main.c src/push_swap.c	src/utils_push.c	src/utils_reverse_rotate.c	src/utils_rotate.c\
         	src/utils_swap.c src/utils_arguments.c src/utils_lst.c src/utils_list_2.c src/utils_algorithm.c\
-			src/utils_sorts.c
+			src/utils_sorts.c src/utils_ksort.c
 OBJS	=	$(SRCS:.c=.o)
 
 all:	$(NAME)
