@@ -12,13 +12,34 @@
 
 #include "pushswap.h"
 
+static void	push_swap(t_node *stack_a, t_node *stack_b)
+{
+	int	len;
+
+	comprove_dup_argv(&stack_a);
+	assig_index(&stack_a);
+	len = list_size(stack_a);
+	if (!is_sorted(&stack_a))
+	{
+		if (list_size(stack_a) == 2)
+			sa(&stack_a);
+		else if (list_size(stack_a) == 3)
+			sort_three_node(&stack_a);
+		else if (list_size(stack_a) == 4)
+			sort_four_node(&stack_a, &stack_b);
+		else if (list_size(stack_a) == 5)
+			sort_five_node(&stack_a, &stack_b);
+		else
+			k_sort(&stack_a, &stack_b, len);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
 	int		i;
 	char	**num;
-	int len;
 
 	num = NULL;
 	i = 1;
@@ -34,23 +55,7 @@ int	main(int argc, char **argv)
 		insert_stack(&stack_a, num);
 		i++;
 	}
-	comprove_dup_argv(&stack_a);
-	assig_index(&stack_a);
-	len = list_size(stack_a);
-	if (!is_sorted(&stack_a))
-	{
-		if (list_size(stack_a) == 2)
-			sa(&stack_a);
-		else if (list_size(stack_a) == 3)
-			sort_three_node(&stack_a);
-		else if (list_size(stack_a) == 4)
-			sort_four_node(&stack_a, &stack_b);
-		else if (list_size(stack_a) == 5)
-			sort_five_node(&stack_a, &stack_b);
-		else
-			k_sort(&stack_a, &stack_b,len);
-	}
-	print_list(stack_a);
+	push_swap(stack_a, stack_b);
 	free_lst(&stack_a);
 	return (0);
 }

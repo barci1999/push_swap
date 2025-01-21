@@ -44,13 +44,17 @@ void	comprove_num_argv(char **num, t_node **stack_a)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (num[i] != NULL)
 	{
 		if (!(ft_is_valid_num(num[i])))
+		{
 			fun_error(stack_a);
+		}
 		else
+		{
 			i++;
+		}
 	}
 }
 

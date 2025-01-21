@@ -27,6 +27,7 @@ void	rra(t_node **stack_a)
 	temp_second_last->next = NULL;
 	temp_last->next = (*stack_a);
 	*stack_a = temp_last;
+	ft_printf("rra\n");
 }
 
 void	rrb(t_node **stack_b)
@@ -45,6 +46,7 @@ void	rrb(t_node **stack_b)
 	temp_second_last->next = NULL;
 	temp_last->next = (*stack_b);
 	*stack_b = temp_last;
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_node **stack_a, t_node **stack_b)

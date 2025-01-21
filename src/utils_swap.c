@@ -25,6 +25,7 @@ void	sa(t_node **stack_a)
 	temp_1->next = temp_2->next;
 	*stack_a = temp_2;
 	temp_2->next = temp_1;
+	ft_printf("sa\n");
 }
 
 void	sb(t_node **stack_b)
@@ -41,6 +42,7 @@ void	sb(t_node **stack_b)
 	temp_1->next = temp_2->next;
 	*stack_b = temp_2;
 	temp_2->next = temp_1;
+	ft_printf("sb\n");
 }
 
 void	ss(t_node **stack_a, t_node **stack_b)

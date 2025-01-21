@@ -68,4 +68,3 @@ void	sort_five_node(t_node **stack_a, t_node **stack_b)
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
-
