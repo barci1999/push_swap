@@ -12,25 +12,38 @@
 
 #include "pushswap.h"
 
-static void	push_swap(t_node *stack_a, t_node *stack_b)
+void free_matrix(char **num)
+{
+	int i;
+
+	i = 0;
+	while (num[i])
+	{
+		free(num[i]);
+		i++;
+	}
+	free(num);
+}
+
+static void	push_swap(t_node **stack_a, t_node **stack_b)
 {
 	int	len;
 
-	comprove_dup_argv(&stack_a);
-	assig_index(&stack_a);
-	len = list_size(stack_a);
-	if (!is_sorted(&stack_a))
+	comprove_dup_argv(stack_a);
+	assig_index(stack_a);
+	len = list_size(*stack_a);
+	if (!is_sorted(stack_a))
 	{
-		if (list_size(stack_a) == 2)
-			sa(&stack_a);
-		else if (list_size(stack_a) == 3)
-			sort_three_node(&stack_a);
-		else if (list_size(stack_a) == 4)
-			sort_four_node(&stack_a, &stack_b);
-		else if (list_size(stack_a) == 5)
-			sort_five_node(&stack_a, &stack_b);
+		if (list_size(*stack_a) == 2)
+			sa(stack_a);
+		else if (list_size(*stack_a) == 3)
+			sort_three_node(stack_a);
+		else if (list_size(*stack_a) == 4)
+			sort_four_node(stack_a, stack_b);
+		else if (list_size(*stack_a) == 5)
+			sort_five_node(stack_a, stack_b);
 		else
-			k_sort(&stack_a, &stack_b, len);
+			k_sort(stack_a, stack_b, len);
 	}
 }
 
@@ -53,9 +66,10 @@ int	main(int argc, char **argv)
 		comprove_num_argv(num, &stack_a);
 		comprove_int(num, &stack_a);
 		insert_stack(&stack_a, num);
+		free_matrix(num);
 		i++;
 	}
-	push_swap(stack_a, stack_b);
+	push_swap(&stack_a, &stack_b);
 	free_lst(&stack_a);
 	return (0);
 }
