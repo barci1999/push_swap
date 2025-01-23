@@ -1,34 +1,57 @@
-NAME	=	push_swap
-CC	=	gcc
-CFLAGS	=	-Wall	-Werror	-Wextra	-I./includes	-I libft -I printf
-LIBFT_DIR	=	./libft
-PRINT_DIR	= ./printf
-LIBS = -L$(LIBFT_DIR) -lft -L$(PRINT_DIR) -lftprintf -no-pie
-SRCS	=	main.c src/utils_push.c	src/utils_reverse_rotate.c	src/utils_rotate.c\
-        	src/utils_swap.c src/utils_arguments.c src/utils_lst.c src/utils_list_2.c src/utils_algorithm.c\
-			src/utils_sorts.c src/utils_ksort.c
-OBJS	=	$(SRCS:.c=.o)
+NAME        = push_swap
+BONUS_NAME  = checker
 
-all:	$(NAME)
+CC          = cc
+CFLAGS      = -Wall -Werror -Wextra -I./includes -I libft -I printf
+LIBFT_DIR   = ./libft
+PRINT_DIR   = ./printf
+LIBS        = -L$(LIBFT_DIR) -lft -L$(PRINT_DIR) -lftprintf -no-pie
 
-$(NAME):	$(OBJS)
-	make	-s	-C  $(PRINT_DIR)
-	make	-s	-C	$(LIBFT_DIR)
-	$(CC)	$(CFLAGS)	-o	$(NAME)	$(OBJS)	$(LIBS)
+SRCS        = src/main.c src/utils_push.c src/utils_reverse_rotate.c src/utils_rotate.c \
+              src/utils_swap.c src/utils_arguments.c src/utils_lst.c src/utils_list_2.c \
+              src/utils_algorithm.c src/utils_sorts.c src/utils_ksort.c
 
-%.o:	%.c	includes/pushswap.h
-	$(CC)	$(CFLAGS)	-I./includes	-c	$<	-o	$@
+BONUS_SRC    = src_bonus/main.c src_bonus/utlis_moves_comprover.c
+
+
+BONUS_SRCS   = $(filter-out src/main.c, $(SRCS))
+
+OBJS         = $(SRCS:.c=.o)
+BONUS_OBJ    = $(BONUS_SRCS:.c=.o) $(BONUS_SRC:.c=.o)
+
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	make -s -C $(PRINT_DIR)
+	make -s -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
+
+%.o: %.c includes/pushswap.h
+	$(CC) $(CFLAGS) -I./includes -c $< -o $@
+
 
 clean:
-	rm	-f	$(OBJS)
-	make	-s	-C	$(LIBFT_DIR)	clean
-	make 	-s  -C  $(PRINT_DIR)	clean
+	rm -f $(OBJS)
+	rm -f $(BONUS_OBJ)
+	make -s -C $(LIBFT_DIR) clean
+	make -s -C $(PRINT_DIR) clean
 
-fclean:	clean
-	make	-s	-C	$(LIBFT_DIR)	fclean
-	make	-s  -C  $(PRINT_DIR)    fclean
-	rm	-f	$(NAME)
 
-re:	fclean	all
+fclean: clean
+	make -s -C $(LIBFT_DIR) fclean
+	make -s -C $(PRINT_DIR) fclean
+	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
 
-.PHONY:	all	clean	fclean	re
+
+bonus: $(BONUS_OBJ)
+	make -s -C $(PRINT_DIR)
+	make -s -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJ) $(LIBS)
+
+
+re: fclean all
+
+.PHONY: all clean fclean re bonus
+

@@ -42,6 +42,7 @@ void				pa(t_node **stack_a, t_node **stack_b);
 void				pb(t_node **stack_b, t_node **stack_a);
 void				sa(t_node **stack_a);
 void				sb(t_node **stack_b);
+void				ss(t_node **stack_a, t_node **stack_b);
 void				ra(t_node **stack_a);
 void				rb(t_node **stack_b);
 void				rr(t_node **stack_a, t_node **stack_b);
@@ -68,5 +69,8 @@ void				sort_three_node(t_node **stack_a);
 void				sort_four_node(t_node **stack_a, t_node **stack_b);
 void				sort_five_node(t_node **stack_a, t_node **stack_b);
 void				k_sort(t_node **stack_a, t_node **stack_b, int digits);
+/* Bonus function                                             */
+/* ********************************************************** */
+void				moves(t_node **stack_a, t_node **stack_b, char *line);
 
 #endif

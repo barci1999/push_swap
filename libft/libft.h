@@ -19,6 +19,17 @@
 # include <string.h>
 # include <unistd.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+char				*get_next_line(int fd);
+size_t				ft_get_strlen(const char *str);
+char				*ft_get_strchr(const char *s, int c);
+char				*ft_get_substr(const char *s, unsigned int start,
+						size_t len);
+void				*ft_get_calloc(size_t nmemb, size_t size);
+char				*ft_get_strjoin(char *s1, char *s2);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
