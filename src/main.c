@@ -12,9 +12,9 @@
 
 #include "pushswap.h"
 
-void free_matrix(char **num)
+static void	free_matrix(char **num)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (num[i])
@@ -35,7 +35,7 @@ static void	push_swap(t_node **stack_a, t_node **stack_b)
 	if (!is_sorted(stack_a))
 	{
 		if (list_size(*stack_a) == 2)
-			sa(stack_a);
+			sa(stack_a, true);
 		else if (list_size(*stack_a) == 3)
 			sort_three_node(stack_a);
 		else if (list_size(*stack_a) == 4)

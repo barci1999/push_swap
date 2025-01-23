@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "pushswap.h"
 
-void	pa(t_node **stack_a, t_node **stack_b)
+void	pa(t_node **stack_a, t_node **stack_b, bool flag)
 {
 	t_node	*to_move;
 
@@ -20,10 +20,11 @@ void	pa(t_node **stack_a, t_node **stack_b)
 	to_move = *stack_b;
 	*stack_b = (*stack_b)->next;
 	add_front(stack_a, to_move);
+	if (flag == true)
 		ft_printf("pa\n");
 }
 
-void	pb(t_node **stack_b, t_node **stack_a)
+void	pb(t_node **stack_b, t_node **stack_a, bool flag)
 {
 	t_node	*to_move;
 
@@ -32,5 +33,6 @@ void	pb(t_node **stack_b, t_node **stack_a)
 	to_move = *stack_a;
 	*stack_a = (*stack_a)->next;
 	add_front(stack_b, to_move);
-	ft_printf("pb\n");
+	if (flag == true)
+		ft_printf("pb\n");
 }

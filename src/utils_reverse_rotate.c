@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "pushswap.h"
 
-void	rra(t_node **stack_a)
+void	rra(t_node **stack_a, bool flag)
 {
 	t_node	*temp_last;
 	t_node	*temp_second_last;
@@ -27,10 +27,11 @@ void	rra(t_node **stack_a)
 	temp_second_last->next = NULL;
 	temp_last->next = (*stack_a);
 	*stack_a = temp_last;
-	ft_printf("rra\n");
+	if (flag == true)
+		ft_printf("rra\n");
 }
 
-void	rrb(t_node **stack_b)
+void	rrb(t_node **stack_b, bool flag)
 {
 	t_node	*temp_last;
 	t_node	*temp_second_last;
@@ -46,7 +47,8 @@ void	rrb(t_node **stack_b)
 	temp_second_last->next = NULL;
 	temp_last->next = (*stack_b);
 	*stack_b = temp_last;
-	ft_printf("rrb\n");
+	if (flag == true)
+		ft_printf("rrb\n");
 }
 
 void	rrr(t_node **stack_a, t_node **stack_b)
@@ -55,6 +57,6 @@ void	rrr(t_node **stack_a, t_node **stack_b)
 		return ;
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
-	rra(stack_a);
-	rrb(stack_b);
+	rra(stack_a, true);
+	rrb(stack_b, true);
 }

@@ -38,16 +38,16 @@ int					list_size(t_node *lst);
 
 /* Movements functions                                        */
 /* ********************************************************** */
-void				pa(t_node **stack_a, t_node **stack_b);
-void				pb(t_node **stack_b, t_node **stack_a);
-void				sa(t_node **stack_a);
-void				sb(t_node **stack_b);
+void				pa(t_node **stack_a, t_node **stack_b, bool flag);
+void				pb(t_node **stack_b, t_node **stack_a, bool flag);
+void				sa(t_node **stack_a, bool flag);
+void				sb(t_node **stack_b, bool flag);
 void				ss(t_node **stack_a, t_node **stack_b);
-void				ra(t_node **stack_a);
-void				rb(t_node **stack_b);
+void				ra(t_node **stack_a, bool flag);
+void				rb(t_node **stack_b, bool flag);
 void				rr(t_node **stack_a, t_node **stack_b);
-void				rra(t_node **stack_a);
-void				rrb(t_node **stack_b);
+void				rra(t_node **stack_a, bool flag);
+void				rrb(t_node **stack_b, bool flag);
 void				rrr(t_node **stack_a, t_node **stack_b);
 
 /* Arguments control functions                                */

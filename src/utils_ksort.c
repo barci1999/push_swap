@@ -22,18 +22,18 @@ void	insert_to_b_range(t_node **stack_a, t_node **stack_b, int digits)
 	{
 		if ((*stack_a)->index <= i)
 		{
-			pb(stack_b, stack_a);
+			pb(stack_b, stack_a, true);
 			if (list_size(*stack_b) > 1)
-				rb(stack_b);
+				rb(stack_b, true);
 			i++;
 		}
 		else if ((*stack_a)->index <= i + range)
 		{
-			pb(stack_b, stack_a);
+			pb(stack_b, stack_a, true);
 			i++;
 		}
 		else
-			ra(stack_a);
+			ra(stack_a, true);
 	}
 }
 
@@ -63,15 +63,15 @@ void	k_sort(t_node **stack_a, t_node **stack_b, int digits)
 		if (rb_count <= rrb_count)
 		{
 			while ((*stack_b)->index != (digits - 1))
-				rb(stack_b);
-			pa(stack_a, stack_b);
+				rb(stack_b, true);
+			pa(stack_a, stack_b, true);
 			digits--;
 		}
 		else
 		{
 			while ((*stack_b)->index != (digits - 1))
-				rrb(stack_b);
-			pa(stack_a, stack_b);
+				rrb(stack_b, true);
+			pa(stack_a, stack_b, true);
 			digits--;
 		}
 	}

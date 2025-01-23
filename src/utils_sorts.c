@@ -17,11 +17,11 @@ void	sort_three_node(t_node **stack_a)
 
 	biggest = biggest_node(stack_a);
 	if (biggest == *stack_a)
-		ra(stack_a);
+		ra(stack_a, true);
 	else if ((*stack_a)->next == biggest)
-		rra(stack_a);
+		rra(stack_a, true);
 	if ((*stack_a)->value > (*stack_a)->next->value)
-		sa(stack_a);
+		sa(stack_a, true);
 }
 
 void	sort_four_node(t_node **stack_a, t_node **stack_b)
@@ -31,18 +31,18 @@ void	sort_four_node(t_node **stack_a, t_node **stack_b)
 		if ((*stack_a)->index != 0)
 		{
 			if (detect_index_position(stack_a, 0) <= (list_size(*stack_a) / 2))
-				ra(stack_a);
+				ra(stack_a, true);
 			else
-				rra(stack_a);
+				rra(stack_a, true);
 		}
 		if ((*stack_a)->index == 0)
-			pb(stack_b, stack_a);
+			pb(stack_b, stack_a, true);
 	}
 	if (!is_sorted(stack_a))
 	{
 		sort_three_node(stack_a);
 	}
-	pa(stack_a, stack_b);
+	pa(stack_a, stack_b, true);
 }
 
 void	sort_five_node(t_node **stack_a, t_node **stack_b)
@@ -54,17 +54,17 @@ void	sort_five_node(t_node **stack_a, t_node **stack_b)
 			if ((detect_index_position(stack_a, 0) <= (list_size(*stack_a) / 2))
 				|| (detect_index_position(stack_a, 1) <= (list_size(*stack_a)
 						/ 2)))
-				ra(stack_a);
+				ra(stack_a, true);
 			else
-				rra(stack_a);
+				rra(stack_a, true);
 		}
 		if (((*stack_a)->index == 0 || (*stack_a)->index == 1))
-			pb(stack_b, stack_a);
+			pb(stack_b, stack_a, true);
 	}
 	if (!is_sorted(stack_a))
 		sort_three_node(stack_a);
 	if (is_sorted(stack_b))
-		sb(stack_b);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+		sb(stack_b, true);
+	pa(stack_a, stack_b, true);
+	pa(stack_a, stack_b, true);
 }

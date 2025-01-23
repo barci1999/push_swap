@@ -38,7 +38,6 @@ void	insert_stack(t_node **stack_a, char **num)
 		}
 		i++;
 	}
-	return;
 }
 
 void	comprove_num_argv(char **num, t_node **stack_a)
