@@ -16,6 +16,7 @@ static void	ft_comprove_moves(t_node **stack_a, t_node **stack_b)
 {
 	char	*line;
 
+	line = NULL;
 	line = get_next_line(0);
 	while (line)
 	{
@@ -33,6 +34,19 @@ static void	ft_comprove_moves(t_node **stack_a, t_node **stack_b)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+}
+
+static void	free_matrix(char **num)
+{
+	int	i;
+
+	i = 0;
+	while (num[i])
+	{
+		free(num[i]);
+		i++;
+	}
+	free(num);
 }
 
 int	main(int argc, char **argv)
@@ -60,5 +74,6 @@ int	main(int argc, char **argv)
 	ft_comprove_moves(&stack_a, &stack_b);
 	free_lst(&stack_a);
 	free_lst(&stack_b);
+	free_matrix(num);
 	return (0);
 }

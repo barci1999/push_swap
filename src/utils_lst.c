@@ -15,7 +15,7 @@ t_node	*new_node(int value)
 {
 	t_node	*new_node;
 
-	new_node = malloc(1 * sizeof(t_node));
+	new_node = ft_calloc(1, sizeof(t_node));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->value = value;
