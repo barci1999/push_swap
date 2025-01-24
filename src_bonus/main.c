@@ -28,7 +28,7 @@ static void	ft_comprove_moves(t_node **stack_a, t_node **stack_b)
 		line = get_next_line(0);
 	}
 	free(line);
-	if (!is_sorted(stack_a))
+	if (is_sorted(stack_a))
 		ft_printf("OK\n");
 	else if (list_size(*stack_a) == 1)
 		ft_printf("OK\n");
@@ -71,9 +71,9 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	comprove_dup_argv(&stack_a);
+	assig_index(&stack_a);
 	ft_comprove_moves(&stack_a, &stack_b);
 	free_lst(&stack_a);
-	free_lst(&stack_b);
 	free_matrix(num);
 	return (0);
 }
