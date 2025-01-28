@@ -49,6 +49,7 @@ void	comprove_num_argv(char **num, t_node **stack_a)
 	{
 		if (!(ft_is_valid_num(num[i])))
 		{
+			free_matrix(num);
 			fun_error(stack_a);
 		}
 		else
@@ -81,6 +82,7 @@ void	fun_error(t_node **stack)
 {
 	if (stack != NULL)
 		free_lst(stack);
+
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
@@ -96,10 +98,16 @@ void	comprove_int(char **num, t_node **stack_a)
 	{
 		str = num[i];
 		if (str == NULL || *str == '\0')
+		{
+			free_matrix(num);
 			fun_error(stack_a);
+		}
 		number = ft_atol(str);
 		if (number > INT_MAX || number < INT_MIN)
+		{
+			free_matrix(num);
 			fun_error(stack_a);
+		}
 		i++;
 	}
 }

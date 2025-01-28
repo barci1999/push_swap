@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-static void	free_matrix(char **num)
+void	free_matrix(char **num)
 {
 	int	i;
 

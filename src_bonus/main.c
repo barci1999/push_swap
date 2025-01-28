@@ -36,19 +36,6 @@ static void	ft_comprove_moves(t_node **stack_a, t_node **stack_b)
 		ft_printf("KO\n");
 }
 
-static void	free_matrix(char **num)
-{
-	int	i;
-
-	i = 0;
-	while (num[i])
-	{
-		free(num[i]);
-		i++;
-	}
-	free(num);
-}
-
 int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
@@ -68,6 +55,7 @@ int	main(int argc, char **argv)
 		comprove_num_argv(num, &stack_a);
 		comprove_int(num, &stack_a);
 		insert_stack(&stack_a, num);
+		free_matrix(num);
 		i++;
 	}
 	comprove_dup_argv(&stack_a);

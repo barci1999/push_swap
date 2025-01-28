@@ -58,6 +58,7 @@ void				comprove_num_argv(char **argv, t_node **stack);
 void				comprove_dup_argv(t_node **stack_a);
 void				fun_error(t_node **stack_a);
 void				comprove_int(char **num, t_node **stack_a);
+void				free_matrix(char **num);
 
 /* Algorithm functions                                        */
 /* ********************************************************** */
